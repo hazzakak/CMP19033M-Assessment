@@ -26,7 +26,8 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             if (option == "1")
             {
-                text = inp.manualTextInput();
+                List<string> text_string= inp.manualTextInput();
+                Console.WriteLine(text_string);
             }
             else if (option == "2")
             {
