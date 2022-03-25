@@ -9,7 +9,7 @@ namespace CMP1903M_Assessment_1_Base_Code
     public class Input
     {
         //Handles the text input for Assessment 1
-        
+
         //Method: manualTextInput
         //Arguments: none
         //Returns: String List
@@ -30,12 +30,30 @@ namespace CMP1903M_Assessment_1_Base_Code
 
         //Method: fileTextInput
         //Arguments: string (the file path)
-        //Returns: string
+        //Returns: list
         //Gets text input from a .txt file
-        public string fileTextInput(string fileName)
-        {
-
-            return fileName;
+        public List<string> fileTextInput(string path)
+        {;
+            if (File.Exists(path))
+            {
+                // 1. Get all the text from the file.
+                // 2. Remove anything after the *
+                // 3. Split it by sentences
+                // 4. Add each sentence in to a list rather than an array.
+                string file_text = File.ReadAllText(path);
+                string[] clean_text = file_text.Split('*');
+                string[] sentences = clean_text[0].Split(". ");
+                List<string> lines = new List<string>();
+                foreach (string line in sentences)
+                {
+                    lines.Add(line);
+                }
+                return lines;
+            }
+            else {
+                List<string> lines = new List<string>();
+                return lines;
+            }
         }
 
     }

@@ -10,6 +10,7 @@ namespace CMP1903M_Assessment_1_Base_Code
     class Program
     {
         private static string text;
+        private static List<string> text_string;
 
         static void Main()
         {
@@ -26,14 +27,18 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             if (option == "1")
             {
-                List<string> text_string= inp.manualTextInput();
-                Console.WriteLine(text_string);
+                text_string = inp.manualTextInput();
             }
             else if (option == "2")
             {
-                Console.WriteLine("What is the name of the file. Ensure it is in the current directory.");
+                Console.WriteLine("What is the name of the file. Use the full path such as c://users/harry/text.txt");
                 string file_name = Console.ReadLine();
-                text = inp.fileTextInput(fileName: file_name);
+                text_string = inp.fileTextInput(file_name);
+                if (text_string.Count == 0)
+                {
+                    Console.WriteLine("File does not exist.");
+                    return;
+                }
             } else //ensure that only 1 or 2 is put not anything else or null.
             {
                 Console.WriteLine("You must enter only 1 or 2. Please run the program again");
@@ -44,18 +49,20 @@ namespace CMP1903M_Assessment_1_Base_Code
 
 
             //Create an 'Analyse' object
+            Analyse analysis = new();
+
             //Pass the text input to the 'analyseText' method
-
-
             //Receive a list of integers back
-
+            List<int> values = analysis.analyseText(text_string);
 
             //Report the results of the analysis
-
+            Report report = new Report();
+            report.outputToFile(values, System.AppContext.BaseDirectory + "output.txt");
+            report.outputConsole(values);
 
             //TO ADD: Get the frequency of individual letters?
 
-           
+
         }
         
         
