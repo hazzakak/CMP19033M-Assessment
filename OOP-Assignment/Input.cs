@@ -22,8 +22,11 @@ namespace CMP1903M_Assessment_1_Base_Code
             while (final_char != '*')
             {
                 string input_text = Console.ReadLine();
-                list.Add(input_text);
-                final_char = input_text[input_text.Length-1];
+                if (input_text != "")
+                {
+                    list.Add(input_text);
+                    final_char = input_text[input_text.Length - 1];
+                }
             }
             return list;
         }

@@ -60,6 +60,9 @@ namespace CMP1903M_Assessment_1_Base_Code
             report.outputToFile(values, System.AppContext.BaseDirectory + "output.txt");
             report.outputConsole(values);
 
+            Test test = new Test();
+            test.test(values);
+
             //TO ADD: Get the frequency of individual letters?
 
 
